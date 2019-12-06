@@ -1,0 +1,126 @@
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a href="patadd" class="nav-link" routerLinkActive="active">Add Patient</a>
+    </li>
+    <li class="nav-item">
+      <a href="patlist" class="nav-link" routerLinkActive="active">View Patients</a>
+    </li>
+    <li class="nav-item">
+      <a href="login" class="nav-link" routerLinkActive="active" (click)="Logout()">Logout</a>
+    </li>
+  </ul>
+</nav>
+
+
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="patientForm" novalidate (ngSubmit)="addPatient()">
+
+
+      <div [ngClass]="form-group">
+        <label class="col-md-4">First Name</label>
+        <input type="text" class="form-control" formControlName="f_name" #f_name />
+      </div>
+
+      <div
+        *ngIf="patientForm.controls['f_name'].invalid && (patientForm.controls['f_name'].dirty || patientForm.controls['f_name'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="patientForm.controls['f_name'].errors.required">
+          First Name is required.
+        </div>
+      </div>
+
+      <br>
+
+      <div [ngClass]="form-group">
+        <label class="col-md-4">Last Name</label>
+        <input type="text" class="form-control" formControlName="l_name" #l_name />
+      </div>
+
+      <div
+        *ngIf="patientForm.controls['l_name'].invalid && (patientForm.controls['l_name'].dirty || patientForm.controls['l_name'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="patientForm.controls['l_name'].errors.required">
+          Last Name is required.
+        </div>
+      </div>
+
+      <br>
+
+      <div [ngClass]="form-group">
+        <label class="col-md-4">Age</label>
+        <input type="text" class="form-control" formControlName="age" #age />
+      </div>
+
+      <div
+        *ngIf="patientForm.controls['age'].invalid && (patientForm.controls['age'].dirty || patientForm.controls['age'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="patientForm.controls['age'].errors.required">
+          Age is required.
+        </div>
+      </div>
+
+      <br>
+
+
+      <div [ngClass]="form-group">
+        <label class="col-md-4">Choose Gender</label>
+        <select class="form-control" formControlName="gender">
+          <option value="">Choose Gender</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+          <option value="O">Others</option>
+        </select>
+
+
+        <div
+          *ngIf="patientForm.controls['gender'].invalid && (patientForm.controls['gender'].dirty || patientForm.controls['gender'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="patientForm.controls['gender'].errors.required">
+            Gender is required.
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div [ngClass]="form-group">
+        <label class="col-md-4">Address</label>
+        <input type="text" class="form-control" formControlName="address" #address />
+      </div>
+
+      <div
+        *ngIf="patientForm.controls['address'].invalid && (patientForm.controls['address'].dirty || patientForm.controls['address'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="patientForm.controls['address'].errors.required">
+          Address is required.
+        </div>
+      </div>
+
+      <br>
+
+      <div [ngClass]="form-group">
+        <label class="col-md-4">Contact</label>
+        <input type="text" class="form-control" formControlName="phno" #phno />
+      </div>
+
+      <div
+        *ngIf="patientForm.controls['phno'].invalid && (patientForm.controls['phno'].dirty || patientForm.controls['phno'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="patientForm.controls['phno'].errors.required">
+          Contact is required.
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark" [disabled]="patientForm.pristine || patientForm.invalid">
+          REGISTER PATIENT
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
